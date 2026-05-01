@@ -17,3 +17,5 @@ def test_simple_lo():
     assert interpret("👍" * 5 + "😂 👎 😭 🔢") == "0"
 def test_nested_loo():
     assert interpret("👍" * 3 + "😂 👉 👍" * 2 + "👈 👎 😭 👉 🔢") == "6"
+def test_nested_loo():
+    assert interpret("🍅️") == "(❁´◡`❁)"
