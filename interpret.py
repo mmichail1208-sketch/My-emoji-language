@@ -14,6 +14,6 @@ def test_output_c():
 def test_output_n():
     assert interpret("👍" * 42 + "🔢") == "42"
 def test_simple_lo():
-    assert interpret("👍" * 5 + "▶ 👎 ◀ 🔢") == "0"
+    assert interpret("👍" * 5 + "😂 👎 😭 🔢") == "0"
 def test_nested_loo():
-    assert interpret("👍" * 3 + "▶ 👉 👍" * 2 + "👈 👎 ◀ 👉 🔢") == "6"
+    assert interpret("👍" * 3 + "😂 👉 👍" * 2 + "👈 👎 😭 👉 🔢") == "6"
