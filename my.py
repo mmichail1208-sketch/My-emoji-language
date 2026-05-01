@@ -35,10 +35,10 @@ def interpret(code):
             output = output + str(memory[pointer]) + ' '
         elif command == '⏬':#Ввод числа в текущую ячейку
             memory[pointer] = int(input())
-        elif command == '▶':#Цикл: если в ячейке 0, выйти из цикла
+        elif command == '😂':#Цикл: если в ячейке 0, выйти из цикла
             if memory[pointer] == 0:
                 pc = loops[pc]
-        elif command == '◀':#Конец цикла
+        elif command == '😭':#Конец цикла
             if memory[pointer] != 0:
                 pc = loops[pc]
         
