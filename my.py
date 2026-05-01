@@ -15,7 +15,7 @@ def interpret(code):
             start = stack.pop()
             loops[start] = i
             loops[i] = start
-    
+    random_simbol=['(❁´◡`❁)']
     output = ""  # Строка для вывода вместо списка
     
     while pc < len(tokens):
@@ -33,8 +33,8 @@ def interpret(code):
             output = output + chr(memory[pointer])
         elif command == '🔢':
             output = output + str(memory[pointer]) + ' '
-        elif command == '⏬':#Ввод числа в текущую ячейку
-            memory[pointer] = int(input())
+        elif command == '🍅️':#Ввод числа в текущую ячейку
+            memory[pointer] = random_simbol
         elif command == '😂':#Цикл: если в ячейке 0, выйти из цикла
             if memory[pointer] == 0:
                 pc = loops[pc]
