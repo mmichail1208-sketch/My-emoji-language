@@ -15,7 +15,9 @@ def interpret(code):
             start = stack.pop()
             loops[start] = i
             loops[i] = start
-            
+    
+    output = ""  # Строка для вывода вместо списка
+    
     while pc < len(tokens):
         command = tokens[pc]
         
@@ -28,9 +30,9 @@ def interpret(code):
         elif command == '👈':#Сдвинуть указатель влево
             pointer -= 1
         elif command == '🤖':
-            print(chr(memory[pointer]), end='')
+            output = output + chr(memory[pointer])
         elif command == '🔢':
-            print(memory[pointer], end=' ')
+            output = output + str(memory[pointer]) + ' '
         elif command == '⏬':#Ввод числа в текущую ячейку
             memory[pointer] = int(input())
         elif command == '▶':#Цикл: если в ячейке 0, выйти из цикла
@@ -41,6 +43,11 @@ def interpret(code):
                 pc = loops[pc]
         
         pc += 1
+    
+    if output.endswith(' '):
+        output = output[:-1]
+    return output
+if __name__ == "__main__":
+    program = "👍" * 65 + "🤖"
+    print(interpret(program))
 
-program = "👍" * 65 + "🤖"
-interpret(program)
