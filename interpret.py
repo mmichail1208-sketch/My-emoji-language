@@ -17,7 +17,7 @@ def test_input_number(x:  # ⏬
     assert interpret("⏬ 🔢") == "42"
 def test_loop_start_end():  # 😂 и 😭 (цикл)
     assert interpret("👍" * 5 + "😂 👎 😭 🔢") == "0"
-def test_old_loop_start(monkeypatch):  # ▶ 
+def test_old_loop_start(x):  # ▶ 
     assert interpret("👍" * 3 + "▶ 👎 ◀ 🔢") == "0"
-def test_old_loop_end(monkeypatch):  # ◀ 
+def test_old_loop_end(x):  # ◀ 
     assert interpret("👍" * 3 + "▶ 👎 ◀ 🔢") == "0"
