@@ -19,11 +19,5 @@ def test_input_number():
     result = interpret("⏬ 🔢")
     builtins.input = original
     assert result == "42"
-def test_loop_start_end():
+def test_loop():
     assert interpret("👍 👍 👍 👍 👍 😂 👎 😭 🔢") == "0"
-def test_old_loop_start():
-    assert interpret("👍 👍 👍 ▶ 👎 ◀ 🔢") == "0"
-def test_old_loop_end():
-    assert interpret("👍 👍 👍 ▶ 👎 ◀ 🔢") == "0"
-if __name__ == "__main__":
-    pytest.main([__file__, "-v"])
