@@ -15,7 +15,7 @@ def interpret(code):
             start = stack.pop()
             loops[start] = i
             loops[i] = start
-    random_simbol=['(❁´◡`❁)']
+    random_simbol=['(❁◡❁)']
     output = ""  # Строка для вывода вместо списка
     
     while pc < len(tokens):
