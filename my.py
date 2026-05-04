@@ -8,13 +8,13 @@ def interpret(code):
     pc = 0
     loops = {}
     stack = []
-    random_simbol = ['(❁◡❁)']  # Морд
+    random_symbol = '(❁◡❁)'
     output = ""  
     
     for i, token in enumerate(tokens):
-        if token == '😂':  #Начало цикла
+        if token == '😂':  # Начало цикла
             stack.append(i)
-        elif token == '😭':  #Конец цикла
+        elif token == '😭':  # Конец цикла
             start = stack.pop()
             loops[start] = i
             loops[i] = start
@@ -24,30 +24,28 @@ def interpret(code):
         
         if command == '👍':  # Увеличить значение
             memory[pointer] += 1
-        elif command == '👎':  #Уменьшить
+        elif command == '👎':  # Уменьшить
             memory[pointer] -= 1
-        elif command == '👉':  #Сдвинуть указатель вправо
+        elif command == '👉':  # Сдвинуть указатель вправо
             pointer += 1
-        elif command == '👈':  #Сдвинуть указатель влево
+        elif command == '👈':  # Сдвинуть указатель влево
             pointer -= 1
-        elif command == '🤖':  #Вывести символ (ASCII)
+        elif command == '🤖':  # Вывести символ (ASCII)
             output += chr(memory[pointer])
-        elif command == '🔢':  #Вывести число
+        elif command == '🔢':  # Вывести число
             output += str(memory[pointer]) + ' '
-        elif command == '🍅':  #Ввод числа в текущую ячейку (вывод мордочки)
-            output += ''.join(random_simbol)  # Вывод мордочки
-        elif command == '😂':  #Цикл: если в ячейке 0, выйти из цикла
+        elif command == '🍅':  # Команда для мордочки
+            output += random_symbol  # Вывод мордочки
+        elif command == '😂':  # Цикл: если в ячейке 0, выйти из цикла
             if memory[pointer] == 0:
                 pc = loops[pc]
-        elif command == '😭':  #Конец цикла
+        elif command == '😭':  # Конец цикла
             if memory[pointer] != 0:
                 pc = loops[pc]
 
         pc += 1
     
-    if output.endswith(' '):
-        output = output[:-1]  #Удалить проб
-    return output
+    return output.strip() 
 
 if __name__ == "__main__":
     program = "👍" * 65 + "🤖"
