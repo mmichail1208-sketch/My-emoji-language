@@ -10,9 +10,9 @@ def interpret(code):
     stack = []
     
     for i, token in enumerate(tokens):
-        if token == '😂' or token == '▶':
+        if token == '😂':
             stack.append(i)
-        elif token == '😭' or token == '◀':
+        elif token == '😭':
             start = stack.pop()
             loops[start] = i
             loops[i] = start
@@ -36,17 +36,13 @@ def interpret(code):
             output += str(memory[pointer])
         elif command == '⏬':
             memory[pointer] = int(input())
-        elif command == '😂' or command == '▶':
+        elif command == '😂':
             if memory[pointer] == 0:
                 pc = loops[pc]
-        elif command == '😭' or command == '◀':
+        elif command == '😭':
             if memory[pointer] != 0:
                 pc = loops[pc]
         
         pc += 1
     
     return output
-
-if __name__ == "__main__":
-    program = "👍 " * 65 + "🤖"
-    print(interpret(program))
