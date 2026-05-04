@@ -13,10 +13,11 @@ def interpret(code):
         if token == '😂':
             stack.append(i)
         elif token == '😭':
-            start = stack.pop()
-            loops[start] = i
-            loops[i] = start
-
+            if stack:
+                start = stack.pop()
+                loops[start] = i
+                loops[i] = start
+    
     output = ""
     
     while pc < len(tokens):
@@ -38,10 +39,12 @@ def interpret(code):
             memory[pointer] = int(input())
         elif command == '😂':
             if memory[pointer] == 0:
-                pc = loops[pc]
+                if pc in loops:
+                    pc = loops[pc]
         elif command == '😭':
             if memory[pointer] != 0:
-                pc = loops[pc]
+                if pc in loops:
+                    pc = loops[pc]
         
         pc += 1
     
