@@ -18,4 +18,4 @@ def test_simple_lo():
 def test_nested_loo():
     assert interpret("👍" * 3 + "😂 👉 👍" * 2 + "👈 👎 😭 👉 🔢") == "6"
 def test_face_output():
-    assert interpret("🍅") == "(❁◡❁)" 
+    assert interpret("🍅") == "(❁◡❁)"
