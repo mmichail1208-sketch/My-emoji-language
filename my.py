@@ -11,6 +11,7 @@ def interpret(code):
     random_symbol = '(❁◡❁)'
     output = ""  
     
+    # Поиск пар циклов с использованием лиц 😂 и 😭
     for i, token in enumerate(tokens):
         if token == '😂':  # Начало цикла
             stack.append(i)
@@ -33,9 +34,9 @@ def interpret(code):
         elif command == '🤖':  # Вывести символ (ASCII)
             output += chr(memory[pointer])
         elif command == '🔢':  # Вывести число
-            output += str(memory[pointer]) + ' '
+            output += str(memory[pointer])
         elif command == '🍅':  # Команда для мордочки
-            output += random_symbol  # Вывод мордочки
+            output += random_symbol
         elif command == '😂':  # Цикл: если в ячейке 0, выйти из цикла
             if memory[pointer] == 0:
                 pc = loops[pc]
@@ -45,6 +46,9 @@ def interpret(code):
 
         pc += 1
     
-    return output.strip() 
+    return output
 
+if __name__ == "__main__":
+    program = "👍" * 65 + "🤖"
+    print(interpret(program))
 
