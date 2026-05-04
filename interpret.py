@@ -21,3 +21,5 @@ def test_input_number():
     assert result == "42"
 def test_loop():
     assert interpret("👍 👍 👍 👍 👍 😂 👎 😭 🔢") == "0"
+def test_nested_loops():
+    assert interpret("👍 👍 👍 👍 👍 😂 👎 😂 👎 😭 😭 🔢") == "0"
