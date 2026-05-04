@@ -12,12 +12,18 @@ def test_output_char():
     assert interpret("👍 " * 72 + "🤖") == "H"
 def test_output_number():
     assert interpret("👍 " * 42 + "🔢") == "42"
-def test_input_number(monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: "42")
-    assert interpret("⏬ 🔢") == "42"
+def test_input_number():
+    import builtins
+    original = builtins.input
+    builtins.input = lambda _: "42"
+    result = interpret("⏬ 🔢")
+    builtins.input = original
+    assert result == "42"
 def test_loop_start_end():
     assert interpret("👍 👍 👍 👍 👍 😂 👎 😭 🔢") == "0"
-def test_old_loop_start(monkeypatch):
+def test_old_loop_start():
     assert interpret("👍 👍 👍 ▶ 👎 ◀ 🔢") == "0"
-def test_old_loop_end(monkeypatch):
+def test_old_loop_end():
     assert interpret("👍 👍 👍 ▶ 👎 ◀ 🔢") == "0"
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])
