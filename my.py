@@ -47,7 +47,4 @@ def interpret(code):
     
     return output.strip() 
 
-if __name__ == "__main__":
-    program = "👍" * 65 + "🤖"
-    print(interpret(program))
 
